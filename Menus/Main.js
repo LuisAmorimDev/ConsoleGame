@@ -10,10 +10,6 @@ const choices = [GamePlayer ? 'Continuar' : 'Jogar', 'Load', 'Sair'];
 if (getGamePlayer()) choices.unshift('Novo Jogo');
 
 
-console.log('====================================');
-console.log(GamePlayer);
-console.log('====================================');
-
 const thenMain = (awnser) => {
 
   setTimeout(() => { console.log(getGamePlayer()); }, 5000);

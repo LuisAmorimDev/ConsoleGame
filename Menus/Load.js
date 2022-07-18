@@ -35,7 +35,7 @@ const Load = (menuAVoltar) => {
     myPromise.then(function (player) { setGamePlayer(player); process.emit("Stats"); }, function () { process.emit("Main"); });
   }
 
-  return new MenuList("load", "Load Game", [...choices, "Voltar"], then)
+  return new MenuList("load", "Load Game", [...choices, "Voltar"], then);
 }
 
 export default Load;
