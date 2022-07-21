@@ -14,7 +14,7 @@ const choicesPromise = new Promise((resolve, reject) => {
     return;
   }
 });
-choicesPromise.then(function (list) { choices = list; }, function (err) { getSaveFiles() });
+choicesPromise.then(function (list) { choices = list; }, function (err) { console.log(err); });
 
 let myPromise = new Promise(function (resolve, reject) {
   let player = Loader()

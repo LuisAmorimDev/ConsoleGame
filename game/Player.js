@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 export function CreatePlayerObj(nome, profession, level) {
   let player = {
     nome: nome,
@@ -18,29 +20,49 @@ export default class Player {
   nome = ""
   profession = null
   level = 1
-  exp = 0;
-  expToLvlUP = 1000;
   inventory = {}
   quests = {}
-  stats = { health: 0, maxhealth: 0 }
+  stats = {
+    xp: 0,
+    xpToLvlUP: 1000,
+    health: 0,
+    maxhealth: 0,
+    defense: 0,
+    attack: 5
+  }
 
   Create(player) {
     this.nome = player.nome
     this.profession = player.profession
-    this.stats.health = player.stats.health
-    this.stats.maxhealth = player.stats.maxhealth
+    this.stats = player.stats
     this.level = player.level
     this.inventory = player.inventory
     this.quests = player.quests
   }
 
-  // Create(nome, profession, level, inventory, quests) {
-  //   this.nome = nome;
-  //   this.profession = profession.nome;
-  //   this.level = level;
-  //   this.inventory = inventory;
-  //   this.quests = quests;
-  // }
+  Attack(target) {
+    target.Hurt(this.stats.attack * (target.stats.defense / 100 + 1));
+  }
+
+  Hurt(damage) {
+    this.stats.health -= damage;
+    if (this.stats.health <= 0) {
+      this.stats.health = 0;
+      process.emit('BattleResult', { result: "lost" })
+    }
+  }
+
+  AddXp(xp) {
+    this.stats.xp += xp;
+    let message = "";
+    if (this.stats.xp >= this.stats.xpToLvlUP) {
+      message = `  Level up\n  ${chalk.yellow(this.level)} -> ${chalk.yellow(this.level + 1)}`;
+      // console.log(`Level up\n  ${this.level} -> ${this.level + 1}`);
+      this.level++;
+      this.stats.xpToLvlUP *= 1.5;
+    }
+    return message;
+  }
 }
 
 class Inventory {

@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import inquirer from "inquirer";
+import { GamePlayer } from "../index.js";
 import { MenuList } from "./ClassMenus.js";
 
 
@@ -10,16 +11,16 @@ const thenJornal = (awnsers) => {
     process.emit("Jogar");
     return;
   }
-  process.emit(awnsers.jornal,Jornal);
+  process.emit(awnsers.jornal, Jornal);
 }
 
-const Jornal = (player) => {
+const Jornal = () => {
   const msg = `Character Jornal
-Nome: ${chalk.gray(player.nome)}
-Profession: ${chalk.gray(player.profession)}
-EXP: ${chalk.gray(player.exp + '/' + player.expToLvlUP)}
+Nome: ${chalk.gray(GamePlayer.nome)}
+Profession: ${chalk.gray(GamePlayer.profession)}
+EXP: ${chalk.gray(GamePlayer.stats.xp + '/' + GamePlayer.stats.xpToLvlUP)}
 ${new inquirer.Separator}
-Health: ${chalk.gray(player.stats.health + '/' + player.stats.maxhealth)}
+Health: ${chalk.gray(GamePlayer.stats.health + '/' + GamePlayer.stats.maxhealth)}
 `;
   return new MenuList("jornal", msg, choices, thenJornal)
 }
