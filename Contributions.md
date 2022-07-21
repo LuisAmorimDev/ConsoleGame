@@ -10,6 +10,14 @@ flowchart TD
   A[Viajar uma unidade] --> B{Quer parar e explorar?};
   B -- Sim --> C[Perde tempo e explora];
   B -- Não --> A;
+  C -- Encontra inimigos --> D{Quer enfrentar?};
+  C -- Encontra recustos --> E{Quer coletar?};
+  D -- Sim --> F{Derrotou todos?};
+  D -- Não --> G{Tenta Fugir?};
+  F -- Sim --> B;
+  F -- Não --> D;
+  G -- Conseguiu --> B;
+  G -- Não Conseguiu --> F;
 
 ```
 
@@ -29,6 +37,3 @@ Pontos de vida que a entidade tem se chegar a 0 a entidade morre.
 
 Máximo de vida que a entidade pode regenerar/recuparar naturalmente, este valor pode ser depois expandido atravez da súbida de nível e ou efeitos temporários.
 
-```
-
-```
