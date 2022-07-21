@@ -1,7 +1,9 @@
+import chalk from "chalk";
 import { MenuList } from "./ClassMenus.js";
+import { FlorestaAlias } from "./Floresta.js";
 import { choicesExtra } from "./Main.js";
 
-const choices = ['Floresta', 'Cidade',]
+const choices = [FlorestaAlias, chalk.white('🏰 Cidade'),]
 
 const thenJogar = (awnser) => {
   process.emit(awnser.jogar, Jogar)

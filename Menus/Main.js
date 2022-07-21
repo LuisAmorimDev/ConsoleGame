@@ -11,8 +11,6 @@ if (getGamePlayer()) choices.unshift('Novo Jogo');
 
 
 const thenMain = (awnser) => {
-
-  setTimeout(() => { console.log(getGamePlayer()); }, 5000);
   if (awnser.menu === 'Continuar') {
     process.emit('jogar');
     return;

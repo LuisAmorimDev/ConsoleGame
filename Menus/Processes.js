@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 import Jogar from "./Jogar.js";
-import Floresta from "./Floresta.js";
+import Floresta, { FlorestaAlias } from "./Floresta.js";
 import CreateCharacter from "./CreateCharacter.js";
 import { GamePlayer } from "../index.js";
 import { MenuInput } from "./ClassMenus.js";
@@ -35,7 +35,7 @@ process.on("CreateCharacter", () => {
     .then(CreateCharacter.getThen());
 });
 
-process.on("Floresta", () => {
+process.on(FlorestaAlias, () => {
   console.clear();
   inquirer
     .prompt(Floresta.getPrompt())
