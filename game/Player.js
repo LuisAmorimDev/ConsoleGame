@@ -6,7 +6,9 @@ export function CreatePlayerObj(nome, profession, level) {
     profession: profession.nome,
     stats: {
       health: profession.stats.health,
-      maxhealth: profession.stats.health
+      maxhealth: profession.stats.health,
+      xp: 0,
+      xpToLvlUP: 1000,
     },
     level: level,
     quests: [],
