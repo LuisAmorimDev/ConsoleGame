@@ -7,13 +7,13 @@ const pathSave = pathApp + `\\Save${Date.now()}.bin`;
 
 export const Saver = (obj) => {
   if (!fs.existsSync(pathApp)) {
-    pathApp = fs.mkdir(pathApp, (err) => {
+    pathApp = fs.mkdirSync(pathApp, (err) => {
       if (err)
         console.log(chalk.bold.bgblue(err.message));
     });
   }
 
-  fs.writeFile(pathSave, JSON.stringify(obj), 'utf8', err => {
+  fs.writeFileSync(pathSave, JSON.stringify(obj), 'utf8', err => {
     if (err) {
       console.log(chalk.bold.bgblue(err.message));
     }
@@ -26,8 +26,8 @@ export const Loader = (path) => {
     let newestTime = Date.now();
     let newestFile = null;
     let player = new Player()
-    if (!path) {
-      fs.readdirSync(pathApp, (err, list) => {
+    if (!path)
+      fs.readdir(pathApp, (err, list) => {
         list.forEach((file) => {
           let mtime = fs.statSync(pathApp + '\\' + file).mtime;
           if (mtime - Date.now() <= newestTime) {
@@ -44,7 +44,7 @@ export const Loader = (path) => {
             return data;
           })))
       })
-    } else {
+    else
       if (fs.existsSync(pathApp + '\\' + path))
         player.Create(JSON.parse(fs.readFileSync(pathApp + '\\' + path, 'utf8', (err, data) => {
           if (err) {
@@ -53,7 +53,6 @@ export const Loader = (path) => {
           }
           return data;
         })))
-    }
     return player;
   } else
     return null;
@@ -62,7 +61,7 @@ export const Loader = (path) => {
 export const getSaveFiles = () => {
   if (fs.existsSync(pathApp)) {
     let array = [];
-    fs.readdirSync(pathApp, (err, list) => {
+    fs.readdir(pathApp, (err, list) => {
       list.forEach(file => { array.push(file) });
     });
     return array;
