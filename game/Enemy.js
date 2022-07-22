@@ -13,7 +13,7 @@ export default class Enemy {
   }
 
   Attack(target) {
-    target.stats.health = this.stats.attack * (target.stats.defense * 100)
+    target.Hurt(this.stats.attack * (target.stats.defense / 100 + 1));
   }
 
   Hurt(damage) {

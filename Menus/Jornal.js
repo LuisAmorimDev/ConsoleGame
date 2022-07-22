@@ -18,7 +18,7 @@ const Jornal = () => {
   const msg = `Character Jornal
 Nome: ${chalk.gray(GamePlayer.nome)}
 Profession: ${chalk.gray(GamePlayer.profession)}
-EXP: ${chalk.gray(GamePlayer.stats.xp + '/' + GamePlayer.stats.xpToLvlUP)}
+XP: ${chalk.gray(GamePlayer.stats.xp + '/' + GamePlayer.stats.xpToLvlUP)}
 ${new inquirer.Separator}
 Health: ${chalk.gray(GamePlayer.stats.health + '/' + GamePlayer.stats.maxhealth)}
 `;

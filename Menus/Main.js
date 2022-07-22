@@ -28,6 +28,6 @@ const thenMain = (awnser) => {
 
   process.emit(awnser.menu, "Main");
 }
-const Main = new MenuList('menu', chalk.bgAnsi256(24).bold.blue('   Hero RPG   '), choices, thenMain)
+const Main = new MenuList('menu', chalk.bgAnsi256(24).bold.white('   Hero RPG   '), choices, thenMain)
 export default Main
 

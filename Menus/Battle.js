@@ -3,8 +3,6 @@ import { MenuList } from "./ClassMenus.js"
 
 const choices = ["Attack", "Run"];
 
-
-
 const Battle = (enemy) => {
   const msg = `Battle
     Enemy: ${enemy.name} (${enemy.stats.health}/${enemy.stats.maxhealth})

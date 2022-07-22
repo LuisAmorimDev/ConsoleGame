@@ -28,16 +28,22 @@ export default class Player {
     health: 0,
     maxhealth: 0,
     defense: 0,
-    attack: 5
+    attack: 50
   }
 
   Create(player) {
     this.nome = player.nome
     this.profession = player.profession
-    this.stats = player.stats
     this.level = player.level
     this.inventory = player.inventory
     this.quests = player.quests
+
+    if (player.stats.xp) this.stats.xp = player.stats.xp
+    if (player.stats.xpToLvlUP) this.stats.xpToLvlUP = player.stats.xpToLvlUP
+    if (player.stats.health) this.stats.health = player.stats.health
+    if (player.stats.maxhealth) this.stats.maxhealth = player.stats.maxhealth
+    if (player.stats.attack) this.stats.attack = player.stats.attack
+    if (player.stats.defense) this.stats.defense = player.stats.defense
   }
 
   Attack(target) {
@@ -56,12 +62,16 @@ export default class Player {
     this.stats.xp += xp;
     let message = "";
     if (this.stats.xp >= this.stats.xpToLvlUP) {
-      message = `  Level up\n  ${chalk.yellow(this.level)} -> ${chalk.yellow(this.level + 1)}`;
-      // console.log(`Level up\n  ${this.level} -> ${this.level + 1}`);
-      this.level++;
-      this.stats.xpToLvlUP *= 1.5;
+      message = this.LevelUp();
     }
+
     return message;
+  }
+
+  LevelUp() {
+    this.level++;
+    this.stats.xpToLvlUP *= 1.5;
+    return `  Level up\n  ${chalk.yellow(this.level - 1)} -> ${chalk.yellow(this.level)}`;
   }
 }
 
